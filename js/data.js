@@ -67,6 +67,19 @@ const COMMENTS = [
 
 const PHOTOS_COUNT = 25;
 
+const arrayForGeneratePhotoUrl = new Array();
+
+for (let i = 1; i <= PHOTOS_COUNT; i++) {
+  arrayForGeneratePhotoUrl.push(i);
+}
+
+const getPhotoUrlNumber = () => {
+  const elementIndex = getRandomInteger(0, arrayForGeneratePhotoUrl.length - 1);
+  const photoUrlNumber = arrayForGeneratePhotoUrl[elementIndex];
+  arrayForGeneratePhotoUrl.splice(elementIndex, 1);
+  return photoUrlNumber;
+};
+
 const createTextComment = () => {
   let randomCountSentence = getRandomInteger(1, 2);
   const commentsCopy = COMMENTS.slice(0);
@@ -95,10 +108,12 @@ const createComment = () => ({
 
 const createPhoto = () => ({
   id: getPhotoId(),
-  url: `photos/${getRandomInteger(1, 25)}.jpg`,
+  url: `photos/${getPhotoUrlNumber()}.jpg`,
   description: getRandomArrayElement(DESCRIPTION_PHOTO),
   likes: getRandomInteger(15, 200),
   comments: Array.from({length: getRandomInteger(0, 30)}, createComment)
 });
 
-const GALLERY = Array.from({length: PHOTOS_COUNT}, createPhoto);
+const createGallery = () => Array.from({length: PHOTOS_COUNT}, createPhoto);
+
+export {createGallery};
