@@ -1,4 +1,5 @@
 import {createGallery} from './data.js';
+import{openFullSizePhoto} from './full-size-photo.js';
 
 const photosContainer = document.querySelector('.pictures');
 const photoTemplate = document.querySelector('#picture')
@@ -16,6 +17,7 @@ const renderPhoto = ({url, description, likes, comments}) => {
   photoElement.querySelector('.picture__img').alt = description;
   photoElement.querySelector('.picture__likes').textContent = likes;
   photoElement.querySelector('.picture__comments').textContent = comments.length;
+  photoElement.addEventListener('click', openFullSizePhoto);
   galleryFragment.append(photoElement);
 };
 
