@@ -15,4 +15,6 @@ const getCommentId = () => (generatedCommentsId += 1);
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getPhotoId, getCommentId, getRandomArrayElement};
+const isEscKey = (evt) => evt.key === 'Escape';
+
+export {getRandomInteger, getPhotoId, getCommentId, getRandomArrayElement, isEscKey};
