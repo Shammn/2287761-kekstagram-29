@@ -31,18 +31,18 @@ const createComment = ({avatar, message, name}) => {
 };
 
 const renderComments = (comments, quantity) => {
-  console.log(shownCommentsCounter);
   for (shownCommentsCounter; shownCommentsCounter < quantity; shownCommentsCounter++){
     if (comments.length > shownCommentsCounter){
-      console.log(shownCommentsCounter);
       createComment(comments[shownCommentsCounter]);
     } else {
-      btnShowMoreComments.classList.add('hidden');
       break;
     }
   }
   commentsContainer.append(commentFragment);
   shownCommentsElement.textContent = `${shownCommentsCounter} из `;
+  if (comments.length === shownCommentsCounter) {
+    btnShowMoreComments.classList.add('hidden');
+  }
 };
 
 const onBtnShowMoreCommentsClick = (comments) =>{
